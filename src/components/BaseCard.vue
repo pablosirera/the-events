@@ -2,10 +2,8 @@
 import { MapPinIcon } from '@heroicons/vue/24/outline'
 
 defineProps({
-  image: {
-    type: String,
-    default:
-      'https://images.pexels.com/photos/4992820/pexels-photo-4992820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  visitDate: {
+    type: [Date, String],
   },
   name: {
     type: String,
@@ -17,19 +15,37 @@ defineProps({
 </script>
 
 <template>
-  <div class="rounded-lg p-4 shadow-sm shadow-indigo-100 max-h-64 w-60">
-    <img :src="image" class="max-h-56 w-full rounded-md object-cover" />
+  <article
+    class="hover:animate-background hover:scale-105 cursor-pointer rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]"
+  >
+    <div class="rounded-xl bg-gray-800 p-4 !pt-20 sm:p-6">
+      <time datetime="2022-10-10" class="block text-xs text-white">{{ visitDate }}</time>
 
-    <div class="mt-2">
-      <h4 class="font-medium text-base text-ellipsis overflow-hidden">{{ name }}</h4>
+      <a href="#">
+        <h3 class="mt-0.5 text-lg font-medium text-white">
+          {{ name }}
+        </h3>
+      </a>
 
-      <div class="mt-2 flex items-center gap-8 text-xs">
-        <div class="inline-flex shrink-0 items-center gap-2">
-          <MapPinIcon class="h-5 w-5" />
+      <div class="inline-flex shrink-0 items-center gap-2">
+        <MapPinIcon class="h-5 w-5" />
 
-          <p class="mt-0 text-gray-500 text-xs">{{ location }}</p>
-        </div>
+        <p class="mt-0 text-gray-500 text-xs">{{ location }}</p>
       </div>
+
+      <!-- <div class="mt-4 flex flex-wrap gap-1">
+        <span
+          class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+        >
+          Snippet
+        </span>
+
+        <span
+          class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+        >
+          JavaScript
+        </span>
+      </div> -->
     </div>
-  </div>
+  </article>
 </template>
