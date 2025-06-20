@@ -55,9 +55,20 @@ export function useFriends() {
     return data ? new Friend(data) : null
   }
 
+  async function updateLastVisited(id, date) {
+    const lastVisitedISO = new Date(date).toISOString()
+    const { error } = await supabase
+      .from('friends')
+      .update({ last_visited: lastVisitedISO })
+      .eq('id', id)
+    if (error) throw new Error('Error actualizando la última visita: ' + error.message)
+    return true
+  }
+
   return {
     listFriends,
     createFriend,
     getFriendById,
+    updateLastVisited,
   }
 }

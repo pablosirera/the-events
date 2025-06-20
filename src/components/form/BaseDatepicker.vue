@@ -6,12 +6,23 @@ const props = defineProps({
   modelValue: { type: String, default: '' },
   placeholder: { type: String, default: 'Selecciona una fecha' },
   dateFormat: { type: String, default: 'dd/MM/yyyy' },
+  isOpen: { type: Boolean, default: undefined },
 })
 const emit = defineEmits(['update:modelValue'])
 
 const currentDate = ref(new Date())
 const selectedDate = ref(props.modelValue || null)
 const isCalendarOpen = ref(false)
+
+watch(
+  () => props.isOpen,
+  val => {
+    if (typeof val === 'boolean') {
+      isCalendarOpen.value = val
+    }
+  },
+  { immediate: true },
+)
 
 const days = computed(() => {
   const year = currentDate.value.getFullYear()
@@ -44,6 +55,7 @@ const handleNextMonth = () => {
 }
 
 const handleToggleCalendar = () => {
+  if (typeof props.isOpen === 'boolean') return
   isCalendarOpen.value = !isCalendarOpen.value
 }
 
@@ -97,6 +109,7 @@ const selectDate = day => {
   const isoDate = formatToISO(dateObj)
   selectedDate.value = isoDate
   emit('update:modelValue', isoDate)
+  if (typeof props.isOpen === 'boolean') return
   isCalendarOpen.value = false
 }
 </script>
@@ -264,7 +277,7 @@ const selectDate = day => {
                   day !== null,
                 'border-2 !border-gray-50 text-dark rounded-full': isSelected(day),
                 'pointer-events-none': day === null,
-                'border-2 border-blue-500 rounded-full': isToday(day) && !isSelected(day),
+                'border-2 !border-blue-500 rounded-full': isToday(day) && !isSelected(day),
               }"
               @click="day !== null ? selectDate(day) : null"
             >

@@ -13,6 +13,11 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
         },
       },
+      colors: {
+        background: '#181818',
+        'background-soft': '#222222',
+        'background-mute': '#282828',
+      },
     },
   },
   plugins: [import('@tailwindcss/forms')],

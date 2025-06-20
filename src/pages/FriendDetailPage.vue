@@ -3,11 +3,16 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useFriends } from '../composables/useFriends'
 import BaseHeader from '../components/BaseHeader.vue'
-import { PhoneIcon } from '@heroicons/vue/24/outline'
+import { PhoneIcon, CheckBadgeIcon } from '@heroicons/vue/24/outline'
+import { useToast } from '../composables/useToast'
+import UpdateVisitFriendModal from '@/components/friendDetail/UpdateVisitFriendModal.vue'
 
 const route = useRoute()
-const { getFriendById } = useFriends()
+const { getFriendById, updateLastVisited } = useFriends()
+const { showError, showSuccess } = useToast()
+
 const friend = ref(null)
+const showUpdateVisitModal = ref(false)
 
 onMounted(async () => {
   friend.value = await getFriendById(route.params.id)
@@ -42,6 +47,28 @@ const daysToBirthday = computed(() => {
   const diff = nextBirthday - today
   return Math.ceil(diff / (1000 * 60 * 60 * 24))
 })
+
+async function registerVisitToday() {
+  if (!friend.value) return
+  try {
+    await updateLastVisited(friend.value.id, new Date())
+    friend.value.lastVisited = new Date().toISOString()
+    showSuccess('¡Última visita actualizada!')
+  } catch (e) {
+    showError('Hubo un error al actualizar la visita')
+  }
+}
+
+async function registerDate(date) {
+  if (!friend.value) return
+  try {
+    await updateLastVisited(friend.value.id, date)
+    friend.value.lastVisited = new Date(date).toISOString()
+    showSuccess('¡Última visita actualizada!')
+  } catch (e) {
+    showError('Hubo un error al actualizar la visita')
+  }
+}
 </script>
 
 <template>
@@ -87,6 +114,27 @@ const daysToBirthday = computed(() => {
       </div>
     </section>
   </main>
+  <div class="flex flex-col items-center mt-8 gap-3">
+    <button
+      class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+      @click="showUpdateVisitModal = true"
+    >
+      Registrar visita
+    </button>
+    <button
+      class="bg-green-600 text-white px-6 py-2 rounded-lg shadow hover:bg-green-700 transition flex items-center gap-2"
+      @click="registerVisitToday"
+    >
+      Visitado hoy
+      <CheckBadgeIcon class="w-5 h-5" />
+    </button>
+  </div>
+
+  <UpdateVisitFriendModal
+    v-if="showUpdateVisitModal"
+    @close="showUpdateVisitModal = false"
+    @select="registerDate"
+  />
 </template>
 
 <style scoped>
