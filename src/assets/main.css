@@ -1,2 +1,4 @@
-@import './tailwind.css';
-@import './base.css';
+@import url('./tailwind.css');
+@import url('./base.css');
+@import url('./global/date.css');
+@import url('./global/toast.css');

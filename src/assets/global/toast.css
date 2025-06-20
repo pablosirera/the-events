@@ -1,0 +1,26 @@
+.Vue-Toastification__container .Vue-Toastification__toast.custom-toast {
+  margin: 0.375rem;
+  border-radius: 0.375rem;
+  width: calc(100% - 0.75rem);
+  min-height: 3.25rem;
+  padding: 1rem;
+  /* TODO: define colors brand */
+  /* background-color: var(--black-800); */
+
+  .Vue-Toastification__toast-body {
+    /* TODO: define font family */
+    /* font-family: var(--font-family-main); */
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    align-items: center;
+    display: flex;
+  }
+
+  .custom-toast-error {
+    background-color: theme('colors.red.500') !important;
+  }
+
+  .custom-toast-success {
+    background-color: theme('colors.green.500') !important;
+  }
+}

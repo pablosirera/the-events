@@ -14,12 +14,21 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.46.2
         version: 2.46.2
+      '@tailwindcss/forms':
+        specifier: ^0.5.9
+        version: 0.5.9(tailwindcss@3.4.4)
+      '@vueuse/core':
+        specifier: ^13.4.0
+        version: 13.4.0(vue@3.4.31)
       vue:
         specifier: ^3.4.29
         version: 3.4.31
       vue-router:
         specifier: ^4.3.3
         version: 4.4.0(vue@3.4.31)
+      vue-toastification:
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.4.31)
     devDependencies:
       '@rushstack/eslint-patch':
         specifier: ^1.8.0
@@ -584,6 +593,11 @@ packages:
   '@supabase/supabase-js@2.46.2':
     resolution: {integrity: sha512-5FEzYMZhfIZrMWEqo5/dQincvrhM+DeMWH3/okeZrkBBW1AJxblOQhnhF4/dfNYK25oZ1O8dAnnxZ9gQqdr40w==}
 
+  '@tailwindcss/forms@0.5.9':
+    resolution: {integrity: sha512-tM4XVr2+UVTxXJzey9Twx48c1gcxFStqn1pQz0tRsX8o3DvxhN5oY5pvyAbUx7VTaZxpej4Zzvc6h+1RJBzpIg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20'
+
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
@@ -592,6 +606,9 @@ packages:
 
   '@types/phoenix@1.6.6':
     resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
+
+  '@types/web-bluetooth@0.0.21':
+    resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
   '@types/ws@8.5.13':
     resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
@@ -688,6 +705,19 @@ packages:
 
   '@vue/test-utils@2.4.6':
     resolution: {integrity: sha512-FMxEjOpYNYiFe0GkaHsnJPXFHxQ6m4t8vI/ElPGpMWxZKpmRvQ33OIrvRXemy6yha03RxhOlQuy+gZMC3CQSow==}
+
+  '@vueuse/core@13.4.0':
+    resolution: {integrity: sha512-OnK7zW3bTq/QclEk17+vDFN3tuAm8ONb9zQUIHrYQkkFesu3WeGUx/3YzpEp+ly53IfDAT9rsYXgGW6piNZC5w==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  '@vueuse/metadata@13.4.0':
+    resolution: {integrity: sha512-CPDQ/IgOeWbqItg1c/pS+Ulum63MNbpJ4eecjFJqgD/JUCJ822zLfpw6M9HzSvL6wbzMieOtIAW/H8deQASKHg==}
+
+  '@vueuse/shared@13.4.0':
+    resolution: {integrity: sha512-+AxuKbw8R1gYy5T21V5yhadeNM7rJqb4cPaRI9DdGnnNl3uqXh+unvQ3uCaA2DjYLbNr1+l7ht/B4qEsRegX6A==}
+    peerDependencies:
+      vue: ^3.5.0
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -1406,6 +1436,10 @@ packages:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
 
+  mini-svg-data-uri@1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
+
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -1991,6 +2025,11 @@ packages:
     resolution: {integrity: sha512-HB+t2p611aIZraV2aPSRNXf0Z/oLZFrlygJm+sZbdJaW6lcFqEDQwnzUBXn+DApw+/QzDU/I9TeWx9izEjTmsA==}
     peerDependencies:
       vue: ^3.2.0
+
+  vue-toastification@2.0.0-rc.5:
+    resolution: {integrity: sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==}
+    peerDependencies:
+      vue: ^3.0.2
 
   vue@3.4.31:
     resolution: {integrity: sha512-njqRrOy7W3YLAlVqSKpBebtZpDVg21FPoaq1I7f/+qqBThK9ChAIjkRWgeP6Eat+8C+iia4P3OYqpATP21BCoQ==}
@@ -2603,6 +2642,11 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
+  '@tailwindcss/forms@0.5.9(tailwindcss@3.4.4)':
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.4.4
+
   '@types/estree@1.0.5': {}
 
   '@types/node@22.10.1':
@@ -2610,6 +2654,8 @@ snapshots:
       undici-types: 6.20.0
 
   '@types/phoenix@1.6.6': {}
+
+  '@types/web-bluetooth@0.0.21': {}
 
   '@types/ws@8.5.13':
     dependencies:
@@ -2775,6 +2821,19 @@ snapshots:
     dependencies:
       js-beautify: 1.15.1
       vue-component-type-helpers: 2.0.22
+
+  '@vueuse/core@13.4.0(vue@3.4.31)':
+    dependencies:
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 13.4.0
+      '@vueuse/shared': 13.4.0(vue@3.4.31)
+      vue: 3.4.31
+
+  '@vueuse/metadata@13.4.0': {}
+
+  '@vueuse/shared@13.4.0(vue@3.4.31)':
+    dependencies:
+      vue: 3.4.31
 
   abbrev@2.0.0: {}
 
@@ -3504,6 +3563,8 @@ snapshots:
 
   mimic-fn@4.0.0: {}
 
+  mini-svg-data-uri@1.4.4: {}
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.11
@@ -4092,6 +4153,10 @@ snapshots:
   vue-router@4.4.0(vue@3.4.31):
     dependencies:
       '@vue/devtools-api': 6.6.3
+      vue: 3.4.31
+
+  vue-toastification@2.0.0-rc.5(vue@3.4.31):
+    dependencies:
       vue: 3.4.31
 
   vue@3.4.31:
