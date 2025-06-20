@@ -23,6 +23,12 @@ const router = createRouter({
       name: ROUTES_NAMES.AUTH,
       component: () => import('@/pages/AuthPage.vue'),
     },
+    {
+      path: '/friend/:id',
+      name: ROUTES_NAMES.FRIEND_DETAIL,
+      component: () => import('@/pages/FriendDetailPage.vue'),
+      meta: { requiresAuth: true },
+    },
   ],
 })
 

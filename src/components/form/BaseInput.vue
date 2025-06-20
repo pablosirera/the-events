@@ -53,7 +53,7 @@ const modelValueProxy = computed({
       :name="name"
       :placeholder="placeholder"
       :class="[
-        'mt-1 w-full rounded-md border-gray-200 bg-zinc-800 light:bg-white text-sm text-white light:text-gray-700 shadow-sm p-3',
+        'mt-1 w-full border rounded-md border-gray-200 dark:border-gray-200 dark:bg-transparent text-sm dark:text-white text-gray-700 p-3',
         inputClass,
       ]"
       v-bind="$attrs"

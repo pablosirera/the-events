@@ -44,7 +44,7 @@ const showArrowLeft = computed(() => {
     <BaseDropdown
       :items="[
         { label: '👤 Añadir amigo', action: () => router.push({ name: ROUTES_NAMES.NEW_FRIEND }) },
-        { label: '🗓️ Añadir evento', action: () => router.push({ name: ROUTES_NAMES.NEW_EVENT }) },
+        // { label: '🗓️ Añadir evento', action: () => router.push({ name: ROUTES_NAMES.NEW_EVENT }) },
       ]"
     >
       <template #trigger>

@@ -2,7 +2,7 @@ import { supabase } from '@/plugins/supabase'
 import useUser from './useUser'
 import Friend from '@/models/Friend'
 
-export default function useFriends() {
+export function useFriends() {
   const { user } = useUser()
 
   async function listFriends() {
@@ -49,8 +49,15 @@ export default function useFriends() {
     return true
   }
 
+  async function getFriendById(id) {
+    const { data, error } = await supabase.from('friends').select('*').eq('id', id).single()
+    if (error) throw new Error(error.message)
+    return data ? new Friend(data) : null
+  }
+
   return {
     listFriends,
     createFriend,
+    getFriendById,
   }
 }
